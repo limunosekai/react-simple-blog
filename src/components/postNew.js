@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createPost } from '../actions/index';
 
-function postNew({ history }) {
+function postNew() {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [categories, setCategories] = useState('');
   const [content, setContent] = useState('');
@@ -26,8 +28,9 @@ function postNew({ history }) {
       categories,
       content,
     };
-    createPost(data);
-    history.push('/');
+    dispatch(createPost(data)).then(() => {
+      window.location.replace('/');
+    });
   };
 
   return (

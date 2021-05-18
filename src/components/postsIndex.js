@@ -15,8 +15,10 @@ function postsIndex() {
     return posts.map((post) => {
       return (
         <li key={post.id} className='list-group-item'>
-          <span className='pull-xs-right'>{post.categories}</span>
-          <strong>{post.title}</strong>
+          <Link to={`/posts/${post.id}`}>
+            <span className='pull-xs-right'>{post.categories}</span>
+            <strong>{post.title}</strong>
+          </Link>
         </li>
       );
     });

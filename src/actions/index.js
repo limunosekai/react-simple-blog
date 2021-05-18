@@ -22,3 +22,21 @@ export function createPost(props) {
     payload: request,
   };
 }
+
+export function fetchPost(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: actions.FETCH_POST,
+    payload: request,
+  };
+}
+
+export function deletePost(id) {
+  const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: actions.DELETE_POST,
+    payload: request,
+  };
+}
